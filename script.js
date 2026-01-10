@@ -2,8 +2,11 @@ const messages = [
   "You are doing amazing 💖",
   "One step at a time, Pachu 🌸",
   "This exam does not define you ✨",
-  "Bubu believes in you 🧸",
-  "I’m always proud of you 💗"
+  "Hannu believes in you 🧸",
+  "I’m always proud of you 💗",
+  "You are the strongest person I ever know 🌸",
+  "The kindest, bootiful human being 💖",
+  "You have got this bubu, fighting ✨"
 ];
 
 function showMessage() {
