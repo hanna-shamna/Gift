@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>For Pachu 💖</title>
   <style>
-    /* --- Body & Theme --- */
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
@@ -18,12 +17,12 @@
       padding: 20px;
     }
 
-    /* --- Floating hearts --- */
+    /* Floating hearts */
     .hearts::before {
       content: "💗 💕 💖 💓 💞";
       position: fixed;
       top: -10%;
-      width: 75%;
+      width: 100%;
       text-align: center;
       font-size: 2rem;
       animation: fall 8s linear infinite;
@@ -36,7 +35,6 @@
       100% { transform: translateY(120vh); }
     }
 
-    /* --- Title --- */
     h1 {
       text-align: center;
       color: #ff4d88;
@@ -44,7 +42,6 @@
       font-size: 2rem;
     }
 
-    /* --- Bubu image circle --- */
     .bubu {
       width: 160px;
       height: 160px;
@@ -63,7 +60,19 @@
       100% { transform: scale(1); }
     }
 
-    /* --- Letter box (static rectangle) --- */
+    /* Timer box */
+    .timer-box {
+      background: #ff9bbf;
+      color: white;
+      padding: 15px 20px;
+      border-radius: 20px;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
     .letter {
       background: #ffe3e3;
       border-radius: 20px;
@@ -78,7 +87,6 @@
       overflow-y: auto;
     }
 
-    /* --- Button --- */
     button {
       background: #ff4d88;
       color: white;
@@ -91,15 +99,13 @@
       margin-bottom: 20px;
     }
 
-    button:active {
-      transform: scale(0.95);
-    }
+    button:active { transform: scale(0.95); }
 
-    /* --- Mobile adjustments --- */
     @media (max-width: 480px){
       .bubu { width: 130px; height: 130px; }
       h1 { font-size: 1.5rem; }
       .letter { font-size: 0.9rem; }
+      .timer-box { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -107,11 +113,16 @@
 
 <div class="hearts"></div>
 
-<h1>For my Pachuttannzzz 💖</h1>
+<h1>For my Pachuttanz 💖</h1>
 
 <div class="bubu"></div>
 
-<!-- Static rectangle box first -->
+<!-- Timer -->
+<div class="timer-box" id="timer">
+  We have been together for: 0 days 0h 0m 0s 💕
+</div>
+
+<!-- Static rectangle box -->
 <div class="letter" id="letter">
   <!-- Messages will appear here -->
 </div>
@@ -145,12 +156,32 @@ function showNextMessage() {
     letter.appendChild(p);
 
     current++;
-    // Scroll to newest message
+    // Scroll to latest message
     letter.scrollTop = letter.scrollHeight;
   } else {
     alert("All messages delivered 💕");
   }
 }
+
+// Days together timer
+const startDate = new Date("November 29, 2024 00:00:00").getTime();
+const timerDiv = document.getElementById("timer");
+
+function updateTimer() {
+  const now = new Date().getTime();
+  let diff = now - startDate;
+
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+  const seconds = Math.floor((diff % (1000*60)) / 1000);
+
+  timerDiv.textContent = `We have been together for: ${days} days ${hours}h ${minutes}m ${seconds}s 💕`;
+}
+
+// Update every second
+setInterval(updateTimer, 1000);
+updateTimer(); // Initial call
 </script>
 
 </body>
