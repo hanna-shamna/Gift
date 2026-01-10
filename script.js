@@ -24,6 +24,7 @@ const messages = [
   "The kindest, bootiful human being 💖",
   "You have got this bubu, fighting ✨"
 ]; 
+
 function showMessage() {
   const random = Math.floor(Math.random() * messages.length);
   document.getElementById("message").innerText = messages[random];
