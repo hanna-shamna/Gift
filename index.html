@@ -1,159 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>For Pachu ❤️</title>
-
-<style>
-body {
-  margin: 0;
-  height: 100vh;
-  background: linear-gradient(#ffd6e8, #ffeaf3);
-  font-family: 'Comic Sans MS', cursive;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.box {
-  background: white;
-  padding: 45px;
-  border-radius: 35px;
-  box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-  text-align: center;
-  width: 90%;
-  max-width: 520px;
-  animation: pop 0.6s ease;
-  z-index: 2;
-}
-
-@keyframes pop {
-  from {transform: scale(0.85); opacity: 0;}
-  to {transform: scale(1); opacity: 1;}
-}
-
-img {
-  width: 280px;
-  border-radius: 25px;
-  margin: 20px 0;
-}
-
-button {
-  background: #ff6fa5;
-  color: white;
-  border: none;
-  padding: 18px 30px;
-  font-size: 20px;
-  border-radius: 40px;
-  cursor: pointer;
-  margin: 15px;
-}
-
-button:hover {
-  background: #ff4f93;
-}
-
-h2 {
-  color: #ff4f93;
-  font-size: 32px;
-}
-
-p {
-  font-size: 20px;
-}
-
-/* Floating hearts */
-.heart {
-  position: fixed;
-  bottom: -20px;
-  font-size: 24px;
-  animation: floatUp 6s linear infinite;
-}
-
-@keyframes floatUp {
-  from {transform: translateY(0); opacity: 1;}
-  to {transform: translateY(-110vh); opacity: 0;}
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Pachu 💗</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<audio autoplay loop>
-  <source src="https://dl.sndup.net/xyk7/I%20Think%20They%20Call%20This%20Love.mp3" type="audio/mpeg">
-</audio>
+<div class="hearts"></div>
 
-<div class="box" id="content">
-  <img src="https://i.imgur.com/6XK4G4B.png">
-  <button onclick="step2()">Please click here 💕</button>
+<div class="container">
+  <h1>Pachu, you’ve got this 💖</h1>
+  <p class="subtitle">Breathe. One step at a time.</p>
+
+  <div class="breathing-circle"></div>
+  <p class="breathe-text">Breathe in… Breathe out…</p>
+
+  <div class="timer">
+    <h3>Exam Countdown ⏳</h3>
+    <p id="countdown"></p>
+  </div>
+
+  <button onclick="showMessage()">Tap for encouragement</button>
+  <p id="message"></p>
+
+  <a class="link" href="message.html">💌 Message from Hannu</a>
 </div>
 
-<script>
-function step2() {
-  document.getElementById("content").innerHTML = `
-    <h2>Sorry Pachu 🥺</h2>
-    <p>You are my world 🌍❤️</p>
-    <button onclick="step3()">Click here, there is a surprise 🎁</button>
-  `;
-}
-
-/* BIG BOUQUET SEPARATE */
-function step3() {
-  document.getElementById("content").innerHTML = `
-    <h2>This is for you 💐</h2>
-    <img src="https://i.imgur.com/5QZnK0v.png" style="width:320px;">
-    <p>Sorry… Please forgive me ❤️</p>
-    <button onclick="step4()">Next ➡️</button>
-  `;
-}
-
-/* CAKE ORIGINAL CUT */
-function step4() {
-  document.getElementById("content").innerHTML = `
-    <h2>One more thing 🎂</h2>
-    <img src="https://i.imgur.com/3RZQ3cG.png" id="cake">
-    <p>Tap the cake to cut it 🍰</p>
-  `;
-
-  document.getElementById("cake").onclick = step5;
-}
-
-/* AFTER CAKE CUT */
-function step5() {
-  document.getElementById("content").innerHTML = `
-    <img src="https://i.imgur.com/9XnZP0X.png">
-    <h2>💍 Surprise Pachu!</h2>
-    <p>Will you be my boyfriend for life? ❤️</p>
-    <button onclick="yes()">YES 💖</button>
-    <button onclick="no()">NO 🙈</button>
-  `;
-}
-
-function yes() {
-  document.getElementById("content").innerHTML = `
-    <h2>YAYYYY 🥹❤️</h2>
-    <p>Pachu, you made me the happiest person alive 💕</p>
-    <p>This is forever 💍✨</p>
-  `;
-}
-
-function no() {
-  alert("No is not allowed 😌❤️ Try again!");
-}
-
-/* Hearts */
-setInterval(() => {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 25 + 18 + "px";
-  document.body.appendChild(heart);
-  setTimeout(() => heart.remove(), 6000);
-}, 300);
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
